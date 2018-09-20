@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Alert, View, TextInput, StyleSheet } from 'react-native';
+import { Button, Alert, View, StyleSheet } from 'react-native';
+import { FormLabel, Header, FormInput, FormValidationMessage } from 'react-native-elements';
 import * as data from  './../containers/firebase';
 
 const uuidv4 = require('uuid/v4');
@@ -21,31 +22,35 @@ export default class CreatePost extends React.Component {
 
   postProduct() {
     const id = uuidv4();
-    Alert.alert(id);
-    data.postProduct(id,this.state.product,this.state.quantity,this.state.price,this.state.location);
-    this.props.navigation.goBack(); 
+    const res = data.postProduct(id,this.state.product,this.state.quantity,this.state.price,this.state.location);
+    if (res) {
+      Alert.alert('Product posted!');
+      this.props.navigation.goBack();
+    } else Alert.alert('Fields still required');
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Button title="Go back"
-          onPress={() => this.props.navigation.goBack()}/>
 
-        <TextInput placeholder='Product' onChangeText={(text)=>this.setState({product: text})}
-          errorStyle={{ color: 'red' }} errorMessage='This field is required'/>
+        <FormLabel>Product</FormLabel>
+        <FormInput onChangeText={(text)=>this.setState({product: text})}/>
+        <FormValidationMessage>This field is required</FormValidationMessage>
 
-        <TextInput placeholder='Quantity' onChangeText={(text)=>this.setState({quantity: text})}
-          errorStyle={{ color: 'red' }} errorMessage='This field is required' keyboardType='numeric'/>
+        <FormLabel>Quantity</FormLabel>
+        <FormInput onChangeText={(text)=>this.setState({quantity: text})} keyboardType='numeric'/>
+        <FormValidationMessage>This field is required</FormValidationMessage>
 
-        <TextInput placeholder='Price' onChangeText={(text)=>this.setState({price: text})}
-          errorStyle={{ color: 'red' }} errorMessage='This field is required' keyboardType='numeric'/>
+        <FormLabel>Price</FormLabel>
+        <FormInput onChangeText={(text)=>this.setState({price: text})} keyboardType='numeric'/>
+        <FormValidationMessage>This field is required</FormValidationMessage>
+
           
-        <TextInput placeholder='Location' onChangeText={(text)=>this.setState({location: text})}
-          errorStyle={{ color: 'red' }} errorMessage='This field is required'/>
+        <FormLabel>Location</FormLabel>
+        <FormInput onChangeText={(text)=>this.setState({location: text})}/>
+        <FormValidationMessage>This field is required</FormValidationMessage>
 
-        <Button title="Post Product"
-          onPress={() => this.postProduct()}/>
+        <Button color='#42b97c' title="Post Product" onPress={() => this.postProduct()}/>
       </View>
     );
   }

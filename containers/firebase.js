@@ -14,7 +14,13 @@ firebase.initializeApp(config);
 
 const db = firebase.database();
 
-export const postProduct = (id,product,quantity,price,location) => 
-  db.ref('posts/'+id).set({
-    product: product, quantity: quantity, price: price, location: location
-  });
+export const postProduct = (id,product,quantity,price,location) => {
+  if (product !== '' && quantity > 0 && price > 0 && location !== '') {
+    db.ref('posts/'+id).set({id: id, product: product, quantity: quantity, 
+      price: price, location: location});
+    return true;
+  } else {
+    return false;
+  }
+}
+  
