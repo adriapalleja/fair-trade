@@ -1,6 +1,30 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+import { Icon } from 'react-native-elements';
+
 import firebase from 'firebase';
+import HomeScreen from './components/homescreen';
+import SecondScreen from './components/second';
+
+const RootStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Second: SecondScreen,
+  },
+  {
+    initialRouteName: 'Home',
+    navigationOptions: {
+      headerLeft: (<Icon name='menu' color='#fff'/>),
+      headerStyle: {
+        backgroundColor: '#42b97c',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  }
+);
 
 export default class App extends React.Component {
 constructor(props) {
@@ -19,20 +43,8 @@ constructor(props) {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      /* firebase.database().ref('/messages').push() */
+      <RootStack/>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
