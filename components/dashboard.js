@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { AsyncStorage, StyleSheet, View, Button } from 'react-native';
 
 export default class DashBoard extends React.Component {
   static navigationOptions = {
@@ -13,10 +13,17 @@ export default class DashBoard extends React.Component {
           color='#42b97c' title='Create Post' />
         <Button onPress={()=>this.props.navigation.navigate('PostLists')} 
           color='#42b97c' title='Active Posts' />
-        <Button containerViewStyle={styles.buttonContainer} onPress={()=>this.props.navigation.navigate('Profile')} 
+        <Button onPress={()=>this.props.navigation.navigate('Profile')} 
           color='#42b97c' title='Edit Profile'/>
+        <Button onPress={this._onLogOut} 
+          color='#42b97c' title='Log Out'/>
       </View>
     );
+  }
+
+  _onLogOut = async () => {
+    await AsyncStorage.removeItem('userToken');
+    this.props.navigation.navigate('Auth');
   }
 }
 
