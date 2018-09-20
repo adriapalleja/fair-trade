@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, Button, View, StyleSheet } from 'react-native';
 
-export default class SecondScreen extends React.Component {
+export default class Profile extends React.Component {
   static navigationOptions = {
-    title: 'Second',
+    title: 'Profile',
   };
 
   render() {

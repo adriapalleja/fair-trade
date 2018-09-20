@@ -1,17 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { Text, Button, View, StyleSheet } from 'react-native';
 
-export default class HomeScreen extends React.Component {
+export default class PostLists extends React.Component {
   static navigationOptions = {
-    title: 'Home',
+    title: 'Active Posts',
   };
 
   render() {
     return (
       <View style={styles.container}>
-      <Text>Home Screen</Text>
-        <Button onPress={()=>this.props.navigation.navigate('Second')} 
-          title='Vés a nova pàgina' />
+      <Text>Second</Text>
+      <Button
+          title="Go back"
+          onPress={() => this.props.navigation.goBack()}
+        />
       </View>
     );
   }
