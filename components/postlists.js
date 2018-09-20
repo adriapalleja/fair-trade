@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Alert, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { List, ListItem } from 'react-native-elements'
 import * as data from  './../containers/firebase';
 
