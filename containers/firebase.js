@@ -23,5 +23,13 @@ export const postProduct = (id,product,quantity,price,location) => {
   } else {
     return false;
   }
+}  
+
+export const editProduct = (post) => {
+  if (post.product !== '' && post.quantity > 0 && post.price > 0 && post.location !== '') {
+    db.ref('posts/'+post.id).set(post);
+    return true;
+  } else {
+    return false;
+  }
 }
-  

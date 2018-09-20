@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Alert, View, StyleSheet } from 'react-native';
-import { FormLabel, Header, FormInput, FormValidationMessage } from 'react-native-elements';
+import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import * as data from  './../containers/firebase';
 
 const uuidv4 = require('uuid/v4');
