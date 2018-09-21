@@ -5,7 +5,7 @@ import * as data from  '../containers/firebase';
 
 export default class RequestsList extends React.Component {
   static navigationOptions = {
-    title: 'Available Requests',
+    title: 'Your Reviews',
   };
 
   constructor(props) {
@@ -30,15 +30,15 @@ export default class RequestsList extends React.Component {
     });
   }
 
-  onReviewEdition(id) {
-    // this.props.navigation.navigate('ReviewDetails',{id:id});
+  onReviewEdition(post) {
+    this.props.navigation.navigate('ReviewDetails',{post:post});
   }
 
   render() {
     let requests = this.state.posts.map((item) => {
       if (item.receiver===this.state.user_id) {
         return <ListItem key={item.id} subtitle={item.location}
-        title={item.quantity+' kg '+item.product} onPressRightIcon={()=>this.onReviewEdition(item.id)}/>
+        title={item.quantity+' kg '+item.product} onPressRightIcon={()=>this.onReviewEdition(item)}/>
       }
     });
 

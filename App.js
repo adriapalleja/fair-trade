@@ -6,6 +6,7 @@ import CreatePost from './components/createpost';
 import PostsList from './components/postslist';
 import RequestsList from './components/requestslist';
 import ReviewsList from './components/reviewslist';
+import ReviewDetails from './components/reviewdetails';
 import PostDetails from './components/postdetails';
 import RequestDetails from './components/requestdetails';
 import Profile from './components/profile';
@@ -50,6 +51,7 @@ const RootNavigator = createSwitchNavigator(
         RequestsList: RequestsList,
         RequestDetails: RequestDetails,
         ReviewsList: ReviewsList,
+        ReviewDetails: ReviewDetails,
         PostDetails: PostDetails,
         Profile: Profile,
       },
