@@ -41,13 +41,14 @@ export default class PostDetails extends React.Component {
     const post = this.state.post;
     delete post.interested;
     post.receiver = receiver_id;
-    data.editProduct(post);
+    data.editProduct(post).then(this.setState({post:post}));
   }
 
   render(){
+    let receiver = this.state.post.receiver ? <FormLabel>Traded with {Object.values(this.state.users).find((user)=>this.state.post.receiver === user.id).full_name}</FormLabel> : <FormLabel></FormLabel>;
     let interested = Object.values(this.state.users).filter((user)=>this.state.post.interested && this.state.post.interested.includes(user.id));
       let usersInterested = interested ? interested.map((user)=>{
-        return <View><FormLabel>{user.full_name+' '+user.phone_number}</FormLabel>
+        return <View><FormLabel>Interested: {user.full_name+' '+user.phone_number}</FormLabel>
           <Button color='#42b97c' title="Confirm Exchanged" onPress={() => this.confirmExchanged(user.id)}/></View>; 
       }) : <FormLabel>No interested</FormLabel>;
 
@@ -69,8 +70,8 @@ export default class PostDetails extends React.Component {
         <FormInput value={this.state.post.location} 
           onChangeText={(text)=>this.setState(prevState=>({post: {...prevState.post,location:text}}))}/>
       
-        <FormLabel>Interested</FormLabel>
         {usersInterested}
+        {receiver}
         <Button color='#42b97c' title="Edit Post" onPress={() => this.editProduct()}/>
       </View>
     );
