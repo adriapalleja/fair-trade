@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, AsyncStorage, StyleSheet } from 'react-native';
 import { List, ListItem } from 'react-native-elements'
-import * as data from  './../containers/firebase';
+import * as data from  '../containers/firebase';
 
-export default class PostLists extends React.Component {
+export default class PostsList extends React.Component {
   static navigationOptions = {
     title: 'Your Active Posts',
   };

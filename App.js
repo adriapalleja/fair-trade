@@ -4,7 +4,8 @@ import { Icon } from 'react-native-elements';
 
 import DashBoard from './components/dashboard';
 import CreatePost from './components/createpost';
-import PostLists from './components/postlists';
+import PostsList from './components/postslist';
+import RequestsList from './components/requestslist';
 import PostDetails from './components/postdetails';
 import Profile from './components/profile';
 import SignIn from './components/sign_in';
@@ -44,7 +45,8 @@ const RootNavigator = createSwitchNavigator(
       {
         DashBoard: DashBoard,
         CreatePost: CreatePost,
-        PostLists: PostLists,
+        PostsList: PostsList,
+        RequestsList: RequestsList,
         PostDetails: PostDetails,
         Profile: Profile,
       },
