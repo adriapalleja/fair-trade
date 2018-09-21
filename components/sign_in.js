@@ -27,6 +27,9 @@ export default class SignIn extends React.Component {
         <FormValidationMessage>This field is required</FormValidationMessage>
 
         <Button color='#42b97c' title="Sign in!" onPress={this._signInAsync} />
+
+        <Button color='#42b97c' title="Sign up!" 
+          onPress={() => this.props.navigation.navigate('SignUp')} />
       </View>
     );
   }

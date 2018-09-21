@@ -3,8 +3,6 @@ import { Button, Alert, View, StyleSheet } from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import * as data from  './../containers/firebase';
 
-const uuidv4 = require('uuid/v4');
-
 export default class CreatePost extends React.Component {
   static navigationOptions = {
     title: 'Create Post',
@@ -21,8 +19,7 @@ export default class CreatePost extends React.Component {
   }
 
   postProduct() {
-    const id = uuidv4();
-    const res = data.postProduct(id,this.state.product,this.state.quantity,this.state.price,this.state.location);
+    const res = data.postProduct(this.state.product,this.state.quantity,this.state.price,this.state.location);
     if (res) {
       Alert.alert('Product posted!');
       this.props.navigation.goBack();
@@ -32,7 +29,7 @@ export default class CreatePost extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-
+        
         <FormLabel>Product</FormLabel>
         <FormInput onChangeText={(text)=>this.setState({product: text})}/>
         <FormValidationMessage>This field is required</FormValidationMessage>
