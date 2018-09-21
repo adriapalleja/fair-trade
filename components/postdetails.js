@@ -45,7 +45,8 @@ export default class PostDetails extends React.Component {
   }
 
   render(){
-    let receiver = this.state.post.receiver ? <FormLabel>Traded with {Object.values(this.state.users).find((user)=>this.state.post.receiver === user.id).full_name}</FormLabel> : <FormLabel></FormLabel>;
+    let receiver = this.state.post.receiver ? <FormLabel>Traded with {Object.values(this.state.users).find((user)=>this.state.post.receiver === user.id).full_name}</FormLabel> : 
+    <Button color='#42b97c' title="Edit Post" onPress={() => this.editProduct()}/>;
     let interested = Object.values(this.state.users).filter((user)=>this.state.post.interested && this.state.post.interested.includes(user.id));
       let usersInterested = interested ? interested.map((user)=>{
         return <View><FormLabel>Interested: {user.full_name+' '+user.phone_number}</FormLabel>
@@ -72,7 +73,6 @@ export default class PostDetails extends React.Component {
       
         {usersInterested}
         {receiver}
-        <Button color='#42b97c' title="Edit Post" onPress={() => this.editProduct()}/>
       </View>
     );
   }
