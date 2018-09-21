@@ -24,7 +24,7 @@ export default class RequestsList extends React.Component {
   }
 
   onRequestDetails(request) {
-    this.props.navigation.navigate('RequestDetails',{post:request});
+    this.props.navigation.navigate('RequestDetails',{post:request,posts:this.state.posts});
   }
 
   render() {

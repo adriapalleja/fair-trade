@@ -12,6 +12,7 @@ export default class RequestDetails extends React.Component {
     super(props);
     this.state = {
       post: {},
+      posts: {},
       users: [],
       user_id: '',
     }
@@ -26,8 +27,8 @@ export default class RequestDetails extends React.Component {
   componentDidMount() {
     const { navigation } = this.props;
     const post = navigation.getParam('post', {});
-    console.log(post);
-    this.setState({post:post});
+    const posts = navigation.getParam('posts',{});
+    this.setState({post:post,posts:posts});
     data.usersRef.on('value', (snapshot) => {
       let val = snapshot.val();
       let items = Object.values(val);
@@ -36,7 +37,6 @@ export default class RequestDetails extends React.Component {
   }
 
   _checkInterested = async () => {
-    const { navigation } = this.props;
     const post = this.state.post;
     if (post.interested && !post.interested.includes(this.state.user_id)) post.interested.push(this.state.user_id)
     else post.interested = [this.state.user_id];
@@ -45,7 +45,6 @@ export default class RequestDetails extends React.Component {
   }
 
   _uncheckInterested = async () => {
-    const { navigation } = this.props;
     const post = this.state.post;
     const index = post.interested.indexOf(this.state.user_id);
     post.interested.splice(index,1);
@@ -55,6 +54,9 @@ export default class RequestDetails extends React.Component {
 
   render(){
     let user = this.state.users.length ? this.state.users.find((user)=>user.id===this.state.post.poster_id) : '';
+    let pos_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === user.id && post.review && post.review.positive);
+    let neg_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === user.id && post.review && !post.review.positive);
+    
     let interestedButton = this.state.post.interested && this.state.post.interested.includes(this.state.user_id) ?
     <Button color='red' title="No More Interested" onPress={this._uncheckInterested}/> : 
     <Button color='#42b97c' title="Be Interested" onPress={this._checkInterested}/>;
@@ -64,6 +66,7 @@ export default class RequestDetails extends React.Component {
         <FormLabel>Producer</FormLabel>
         <FormLabel>Full Name: {user.full_name}</FormLabel>
         <FormLabel>NIF: {user.nif_number}</FormLabel>
+        <FormLabel>{pos_reviews.length} Positive Reviews : {neg_reviews.length} Negative Reviews</FormLabel>
         <FormLabel></FormLabel>
         <FormLabel>{this.state.post.product} </FormLabel>
         <FormLabel>{this.state.post.quantity} kg</FormLabel>

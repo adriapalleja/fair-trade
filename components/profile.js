@@ -44,8 +44,8 @@ export default class Profile extends React.Component {
   }
 
   render(){
-    let pos_reviews = Object.values(this.state.posts).filter((post)=>post.review && post.review.positive);
-    let neg_reviews = Object.values(this.state.posts).filter((post)=>post.review && !post.review.positive);
+    let pos_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === this.state.user.id && post.review && post.review.positive);
+    let neg_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === this.state.user.id && post.review && !post.review.positive);
     
     return (
       <View style={styles.container}>
