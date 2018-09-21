@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, AsyncStorage, StyleSheet } from 'react-native';
 import { List, ListItem } from 'react-native-elements'
 import * as data from  '../containers/firebase';
 
@@ -12,7 +12,14 @@ export default class RequestsList extends React.Component {
     super(props);
     this.state = {
       posts: [],
+      user_id: '',
     }
+    this._getUser();
+  }
+
+  _getUser = async () => {
+    const user_id = await AsyncStorage.getItem('userToken');
+    this.setState({user_id:user_id});
   }
 
   componentDidMount() {
@@ -23,15 +30,15 @@ export default class RequestsList extends React.Component {
     });
   }
 
-  onProductDetails(id) {
-    this.props.navigation.navigate('RequestDetails',{id:id});
+  onReviewEdition(id) {
+    // this.props.navigation.navigate('ReviewDetails',{id:id});
   }
 
   render() {
     let requests = this.state.posts.map((item) => {
-      if (!item.receiver) {
+      if (item.receiver===this.state.user_id) {
         return <ListItem key={item.id} subtitle={item.location}
-        title={item.quantity+' kg '+item.product} onPressRightIcon={()=>this.onProductDetails(item.id)}/>
+        title={item.quantity+' kg '+item.product} onPressRightIcon={()=>this.onReviewEdition(item.id)}/>
       }
     });
 

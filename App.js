@@ -1,11 +1,11 @@
 import React from 'react';
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
-import { Icon } from 'react-native-elements';
 
 import DashBoard from './components/dashboard';
 import CreatePost from './components/createpost';
 import PostsList from './components/postslist';
 import RequestsList from './components/requestslist';
+import ReviewsList from './components/reviewslist';
 import PostDetails from './components/postdetails';
 import RequestDetails from './components/requestdetails';
 import Profile from './components/profile';
@@ -49,13 +49,13 @@ const RootNavigator = createSwitchNavigator(
         PostsList: PostsList,
         RequestsList: RequestsList,
         RequestDetails: RequestDetails,
+        ReviewsList: ReviewsList,
         PostDetails: PostDetails,
         Profile: Profile,
       },
       {
         initialRouteName: 'DashBoard',
         navigationOptions: {
-          headerRight: (<Icon name='menu' color='#fff'/>),
           headerStyle: {
             backgroundColor: '#42b97c',
           },
