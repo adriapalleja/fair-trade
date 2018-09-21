@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Alert, View, StyleSheet } from 'react-native';
+import { Button, Alert, AsyncStorage, View, StyleSheet } from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import * as data from  './../containers/firebase';
 
@@ -18,8 +18,9 @@ export default class CreatePost extends React.Component {
     }
   }
 
-  postProduct() {
-    const res = data.postProduct(this.state.product,this.state.quantity,this.state.price,this.state.location);
+  _postProduct = async () => {
+    const user_id = await AsyncStorage.getItem('userToken');
+    const res = data.postProduct(user_id, this.state.product,this.state.quantity,this.state.price,this.state.location);
     if (res) {
       Alert.alert('Product posted!');
       this.props.navigation.goBack();
@@ -29,7 +30,7 @@ export default class CreatePost extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        
+
         <FormLabel>Product</FormLabel>
         <FormInput onChangeText={(text)=>this.setState({product: text})}/>
         <FormValidationMessage>This field is required</FormValidationMessage>
@@ -41,13 +42,12 @@ export default class CreatePost extends React.Component {
         <FormLabel>Price</FormLabel>
         <FormInput onChangeText={(text)=>this.setState({price: text})} keyboardType='numeric'/>
         <FormValidationMessage>This field is required</FormValidationMessage>
-
-          
+  
         <FormLabel>Location</FormLabel>
         <FormInput onChangeText={(text)=>this.setState({location: text})}/>
         <FormValidationMessage>This field is required</FormValidationMessage>
 
-        <Button color='#42b97c' title="Post Product" onPress={() => this.postProduct()}/>
+        <Button color='#42b97c' title="Post Product" onPress={this._postProduct}/>
       </View>
     );
   }

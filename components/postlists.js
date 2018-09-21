@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, AsyncStorage, StyleSheet } from 'react-native';
 import { List, ListItem } from 'react-native-elements'
 import * as data from  './../containers/firebase';
 
@@ -11,7 +11,8 @@ export default class PostLists extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: []
+      posts: [],
+      user_id: '',
     }
   }
 
@@ -21,6 +22,12 @@ export default class PostLists extends React.Component {
       let items = Object.values(val);
       this.setState({posts:items});
     });
+    this._getUser();
+  }
+
+  async _getUser() {
+    const user_id = await AsyncStorage.getItem('userToken');
+    this.setState({user_id:user_id});
   }
 
   onProductDetails(id) {
@@ -28,13 +35,17 @@ export default class PostLists extends React.Component {
   }
 
   render() {
+    let posts = this.state.posts.map((item) => {
+      if (item.poster_id === this.state.user_id) {
+        return <ListItem key={item.id} subtitle={item.quantity+' kg'}
+          title={item.product} onPressRightIcon={()=>this.onProductDetails(item.id)}/>
+      }
+    });
+
     return (
       <View style={styles.container}>
         <List containerStyle={styles.listContainer}>
-          {this.state.posts.map((item) => (
-            <ListItem key={item.id} subtitle={item.quantity+' kg'} 
-            title={item.product} onPressRightIcon={()=>this.onProductDetails(item.id)}/>
-          ))}
+         {posts}
         </List>
       </View>
     );
