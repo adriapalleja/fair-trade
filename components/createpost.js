@@ -35,15 +35,15 @@ export default class CreatePost extends React.Component {
         <FormInput onChangeText={(text)=>this.setState({product: text})}/>
         <FormValidationMessage>This field is required</FormValidationMessage>
 
-        <FormLabel>Quantity</FormLabel>
+        <FormLabel>Quantity (kg)</FormLabel>
         <FormInput onChangeText={(text)=>this.setState({quantity: text})} keyboardType='numeric'/>
         <FormValidationMessage>This field is required</FormValidationMessage>
 
-        <FormLabel>Price</FormLabel>
+        <FormLabel>Price (eur per kg)</FormLabel>
         <FormInput onChangeText={(text)=>this.setState({price: text})} keyboardType='numeric'/>
         <FormValidationMessage>This field is required</FormValidationMessage>
   
-        <FormLabel>Location</FormLabel>
+        <FormLabel>Location (Introduce closest city)</FormLabel>
         <FormInput onChangeText={(text)=>this.setState({location: text})}/>
         <FormValidationMessage>This field is required</FormValidationMessage>
 
