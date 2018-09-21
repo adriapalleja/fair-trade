@@ -24,7 +24,7 @@ export default class RequestsList extends React.Component {
   }
 
   onProductDetails(id) {
-    this.props.navigation.navigate('PostDetails',{id:id});
+    this.props.navigation.navigate('RequestDetails',{id:id});
   }
 
   render() {

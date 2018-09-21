@@ -7,6 +7,7 @@ import CreatePost from './components/createpost';
 import PostsList from './components/postslist';
 import RequestsList from './components/requestslist';
 import PostDetails from './components/postdetails';
+import RequestDetails from './components/requestdetails';
 import Profile from './components/profile';
 import SignIn from './components/sign_in';
 import SignUp from './components/sign_up';
@@ -47,6 +48,7 @@ const RootNavigator = createSwitchNavigator(
         CreatePost: CreatePost,
         PostsList: PostsList,
         RequestsList: RequestsList,
+        RequestDetails: RequestDetails,
         PostDetails: PostDetails,
         Profile: Profile,
       },

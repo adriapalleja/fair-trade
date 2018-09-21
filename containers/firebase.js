@@ -15,6 +15,7 @@ firebase.initializeApp(config);
 
 export const db = firebase.database();
 export const postsRef = db.ref('posts');
+export const usersRef = db.ref('users');
 
 export const postProduct = (user_id, product,quantity,price,location) => {
   if (product !== '' && quantity > 0 && price > 0 && location !== '') {
