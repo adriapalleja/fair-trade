@@ -37,8 +37,10 @@ export default class PostsList extends React.Component {
   render() {
     let posts = this.state.posts.map((item) => {
       if (item.poster_id === this.state.user_id) {
-        return <ListItem key={item.id} subtitle={item.quantity+' kg'}
-          title={item.product} onPressRightIcon={()=>this.onProductDetails(item.id)}/>
+        let length = 0;
+        if (item.interested) length = item.interested.length;
+        return <ListItem key={item.id} subtitle={length + ' interested'}
+          title={item.product+' '+item.quantity+' kg'} onPressRightIcon={()=>this.onProductDetails(item.id)}/>
       }
     });
 

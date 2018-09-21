@@ -11,7 +11,8 @@ export default class PostDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: {}
+      post: {},
+      users: {},
     }
   }
 
@@ -21,6 +22,10 @@ export default class PostDetails extends React.Component {
     data.db.ref('/posts/'+postId).on('value', (snapshot) => {
       let val = snapshot.val();
       this.setState({post:val});
+    });
+    data.usersRef.on('value', (snapshot) => {
+      let val = snapshot.val();
+      this.setState({users:val});
     });
   }
 
@@ -32,7 +37,17 @@ export default class PostDetails extends React.Component {
     } else Alert.alert('Fields still required');
   }
 
+  confirmExchange() {
+    
+  }
+
   render(){
+    let interested = Object.values(this.state.users).filter((user)=>this.state.post.interested && this.state.post.interested.includes(user.id));
+      let usersInterested = interested ? interested.map((user)=>{
+        return <View><FormLabel>{user.full_name+' '+user.phone_number}</FormLabel>
+          <Button color='#42b97c' title="Confirm Exchange" onPress={() => this.confirmExchange()}/></View>; 
+      }) : <FormLabel>No interested</FormLabel>;
+
     return (
       <View style={styles.container}>
         <FormLabel>Product</FormLabel>
@@ -51,6 +66,8 @@ export default class PostDetails extends React.Component {
         <FormInput value={this.state.post.location} 
           onChangeText={(text)=>this.setState(prevState=>({post: {...prevState.post,location:text}}))}/>
       
+        <FormLabel>Interested</FormLabel>
+        {usersInterested}
         <Button color='#42b97c' title="Edit Post" onPress={() => this.editProduct()}/>
       </View>
     );
