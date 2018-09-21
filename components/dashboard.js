@@ -12,7 +12,7 @@ export default class DashBoard extends React.Component {
         <Button onPress={()=>this.props.navigation.navigate('CreatePost')} 
           color='#42b97c' title='Create Post' />
         <Button onPress={()=>this.props.navigation.navigate('PostsList')} 
-          color='#42b97c' title='Active Posts' />
+          color='#42b97c' title='Your Posts' />
         <Button onPress={()=>this.props.navigation.navigate('RequestsList')} 
           color='#42b97c' title='Available Requests' />
         <Button onPress={()=>this.props.navigation.navigate('Profile')} 

@@ -5,7 +5,7 @@ import * as data from  '../containers/firebase';
 
 export default class PostsList extends React.Component {
   static navigationOptions = {
-    title: 'Your Active Posts',
+    title: 'Your Posts',
   };
 
   constructor(props) {
@@ -36,10 +36,11 @@ export default class PostsList extends React.Component {
 
   render() {
     let posts = this.state.posts.map((item) => {
+      let length = 0;
+      if (item.interested) length = item.interested.length;
+      let subtitle = item.receiver ? 'Finished' : length + ' interested';
       if (item.poster_id === this.state.user_id) {
-        let length = 0;
-        if (item.interested) length = item.interested.length;
-        return <ListItem key={item.id} subtitle={length + ' interested'}
+        return <ListItem key={item.id} subtitle={subtitle}
           title={item.product+' '+item.quantity+' kg'} onPressRightIcon={()=>this.onProductDetails(item.id)}/>
       }
     });
