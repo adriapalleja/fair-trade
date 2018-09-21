@@ -35,6 +35,13 @@ export const editProduct = (post) => {
   } else return false;
 }
 
+export const editProfile = (user) => {
+  if (user.full_name !== '' && user.nif_number !== '' && user.phone_number !== '') {
+    db.ref('users/'+user.id).set(user);
+    return true;
+  } else return false;
+}
+
 export const createUser = (user) => {
   if (user.password === user.double_pass && user.username && user.full_name && user.phone_number) {
     user.id = uuidv4();
