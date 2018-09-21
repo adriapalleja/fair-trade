@@ -37,15 +37,18 @@ export default class PostDetails extends React.Component {
     } else Alert.alert('Fields still required');
   }
 
-  confirmExchange() {
-    
+  confirmExchanged(receiver_id) {
+    const post = this.state.post;
+    delete post.interested;
+    post.receiver = receiver_id;
+    data.editProduct(post);
   }
 
   render(){
     let interested = Object.values(this.state.users).filter((user)=>this.state.post.interested && this.state.post.interested.includes(user.id));
       let usersInterested = interested ? interested.map((user)=>{
         return <View><FormLabel>{user.full_name+' '+user.phone_number}</FormLabel>
-          <Button color='#42b97c' title="Confirm Exchange" onPress={() => this.confirmExchange()}/></View>; 
+          <Button color='#42b97c' title="Confirm Exchanged" onPress={() => this.confirmExchanged(user.id)}/></View>; 
       }) : <FormLabel>No interested</FormLabel>;
 
     return (

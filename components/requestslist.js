@@ -29,8 +29,10 @@ export default class RequestsList extends React.Component {
 
   render() {
     let requests = this.state.posts.map((item) => {
-      return <ListItem key={item.id} subtitle={item.location}
+      if (!item.receiver) {
+        return <ListItem key={item.id} subtitle={item.location}
         title={item.quantity+' kg '+item.product} onPressRightIcon={()=>this.onProductDetails(item.id)}/>
+      }
     });
 
     return (
