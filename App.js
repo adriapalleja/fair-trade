@@ -29,6 +29,15 @@ const RootNavigator = createSwitchNavigator(
       },
       {
         initialRouteName: 'SignIn',
+        navigationOptions: {
+          headerStyle: {
+            backgroundColor: '#42b97c',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        },
       }
     ),
     App: createStackNavigator(
