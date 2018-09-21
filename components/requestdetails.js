@@ -5,7 +5,7 @@ import * as data from  '../containers/firebase';
 
 export default class RequestDetails extends React.Component {
   static navigationOptions = {
-    title: 'Product Details',
+    title: 'Request Details',
   };
 
   constructor(props) {
@@ -25,11 +25,9 @@ export default class RequestDetails extends React.Component {
 
   componentDidMount() {
     const { navigation } = this.props;
-    const postId = navigation.getParam('id', 'NO-ID');
-    data.db.ref('/posts/'+postId).on('value', (snapshot) => {
-      let val = snapshot.val();
-      this.setState({post:val});
-    });
+    const post = navigation.getParam('post', {});
+    console.log(post);
+    this.setState({post:post});
     data.usersRef.on('value', (snapshot) => {
       let val = snapshot.val();
       let items = Object.values(val);
@@ -39,20 +37,20 @@ export default class RequestDetails extends React.Component {
 
   _checkInterested = async () => {
     const { navigation } = this.props;
-    const postId = navigation.getParam('id', 'NO-ID');
     const post = this.state.post;
     if (post.interested && !post.interested.includes(this.state.user_id)) post.interested.push(this.state.user_id)
     else post.interested = [this.state.user_id];
-    data.db.ref('/posts/'+postId).set(post);
+    data.db.ref('/posts/'+post.id).set(post);
+    this.setState({post:post});
   }
 
   _uncheckInterested = async () => {
     const { navigation } = this.props;
-    const postId = navigation.getParam('id', 'NO-ID');
     const post = this.state.post;
     const index = post.interested.indexOf(this.state.user_id);
     post.interested.splice(index,1);
-    data.db.ref('/posts/'+postId).set(post);
+    data.db.ref('/posts/'+post.id).set(post);
+    this.setState({post:post});
   }
 
   render(){

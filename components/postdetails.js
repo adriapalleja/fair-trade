@@ -5,7 +5,7 @@ import * as data from  './../containers/firebase';
 
 export default class PostDetails extends React.Component {
   static navigationOptions = {
-    title: 'Product Details',
+    title: 'Post Details',
   };
 
   constructor(props) {
@@ -18,11 +18,9 @@ export default class PostDetails extends React.Component {
 
   componentDidMount() {
     const { navigation } = this.props;
-    const postId = navigation.getParam('id', 'NO-ID');
-    data.db.ref('/posts/'+postId).on('value', (snapshot) => {
-      let val = snapshot.val();
-      this.setState({post:val});
-    });
+    const post = navigation.getParam('post', {});
+    this.setState({post:post})
+
     data.usersRef.on('value', (snapshot) => {
       let val = snapshot.val();
       this.setState({users:val});

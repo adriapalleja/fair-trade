@@ -30,8 +30,8 @@ export default class PostsList extends React.Component {
     this.setState({user_id:user_id});
   }
 
-  onProductDetails(id) {
-    this.props.navigation.navigate('PostDetails',{id:id});
+  onProductDetails(post) {
+    this.props.navigation.navigate('PostDetails',{post:post});
   }
 
   render() {
@@ -41,7 +41,7 @@ export default class PostsList extends React.Component {
       let subtitle = item.receiver ? 'Finished' : length + ' interested';
       if (item.poster_id === this.state.user_id) {
         return <ListItem key={item.id} subtitle={subtitle}
-          title={item.product+' '+item.quantity+' kg'} onPressRightIcon={()=>this.onProductDetails(item.id)}/>
+          title={item.product+' '+item.quantity+' kg'} onPressRightIcon={()=>this.onProductDetails(item)}/>
       }
     });
 

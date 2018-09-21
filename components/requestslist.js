@@ -23,15 +23,15 @@ export default class RequestsList extends React.Component {
     });
   }
 
-  onProductDetails(id) {
-    this.props.navigation.navigate('RequestDetails',{id:id});
+  onRequestDetails(request) {
+    this.props.navigation.navigate('RequestDetails',{post:request});
   }
 
   render() {
     let requests = this.state.posts.map((item) => {
       if (!item.receiver) {
         return <ListItem key={item.id} subtitle={item.location}
-        title={item.quantity+' kg '+item.product} onPressRightIcon={()=>this.onProductDetails(item.id)}/>
+        title={item.quantity+' kg '+item.product} onPressRightIcon={()=>this.onRequestDetails(item)}/>
       }
     });
 
