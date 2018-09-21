@@ -37,8 +37,8 @@ export default class SignIn extends React.Component {
 
   _signInAsync = async () => {
     const res = await data.signInUser(this.state.username, this.state.password);
-    if(res) {
-      await AsyncStorage.setItem('userToken', 'abc');
+    if(res.result) {
+      await AsyncStorage.setItem('userToken', res.id);
       Alert.alert('Logged in!');
       this.props.navigation.navigate('App');
     } else Alert.alert('Username or password incorrect');

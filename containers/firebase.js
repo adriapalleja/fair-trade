@@ -49,10 +49,10 @@ export function signInUser (username, password) {
       snapshot.forEach(function (childSnapshot) {
         var childObject = childSnapshot.val();
         if(childObject.username === username && childObject.password === password) {
-          resolve(true);
+          resolve({result:true,id:childObject.id});
         }
       });
-      reject(false);
+      reject({result:false});
     });
   });
 }
