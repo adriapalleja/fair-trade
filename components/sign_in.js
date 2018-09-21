@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, View, AsyncStorage, StyleSheet } from 'react-native';
+import { Button, View, Alert, AsyncStorage, StyleSheet } from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import * as data from  './../containers/firebase';
 
 export default class SignIn extends React.Component {
   static navigationOptions = {
@@ -35,8 +36,12 @@ export default class SignIn extends React.Component {
   }
 
   _signInAsync = async () => {
-    await AsyncStorage.setItem('userToken', 'abc');
-    this.props.navigation.navigate('App');
+    const res = await data.signInUser(this.state.username, this.state.password);
+    if(res) {
+      await AsyncStorage.setItem('userToken', 'abc');
+      Alert.alert('Logged in!');
+      this.props.navigation.navigate('App');
+    } else Alert.alert('Username or password incorrect');
   };
 }
 

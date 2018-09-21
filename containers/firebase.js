@@ -34,11 +34,25 @@ export const editProduct = (post) => {
   } else return false;
 }
 
-export const createUser = async (user) => {
+export const createUser = (user) => {
   if (user.password === user.double_pass && user.username && user.full_name && user.phone_number) {
     user.id = uuidv4();
     delete user.double_pass;
     db.ref('users/'+user.id).set(user);
     return true;
   } else return false;
+}
+
+export function signInUser (username, password) {
+  return new Promise(function(resolve,reject) {
+    db.ref('/users').once('value').then(function(snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+        var childObject = childSnapshot.val();
+        if(childObject.username === username && childObject.password === password) {
+          resolve(true);
+        }
+      });
+      reject(false);
+    });
+  });
 }

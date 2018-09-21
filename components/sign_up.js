@@ -52,7 +52,7 @@ export default class SignUp extends React.Component {
         <FormLabel>DUN Number</FormLabel>
         <FormInput onChangeText={(text)=>this.setState(prevState=>({user: {...prevState.user,dun_number:text}}))}/>
 
-        <Button color='#42b97c' title="Create User" onPress={this._signUp} />
+        <Button color='#42b97c' title="Create User" onPress={() => this.signUp()} />
       </View>
     );
   }
