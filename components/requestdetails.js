@@ -13,7 +13,14 @@ export default class RequestDetails extends React.Component {
     this.state = {
       post: {},
       users: [],
+      user_id: '',
     }
+    this._getUser();
+  }
+
+  _getUser = async () => {
+    const user_id = await AsyncStorage.getItem('userToken');
+    this.setState({user_id:user_id});
   }
 
   componentDidMount() {
@@ -33,16 +40,27 @@ export default class RequestDetails extends React.Component {
   _checkInterested = async () => {
     const { navigation } = this.props;
     const postId = navigation.getParam('id', 'NO-ID');
-    const user_id = await AsyncStorage.getItem('userToken');
     const post = this.state.post;
-    if (post.interested && !post.interested.includes(user_id)) post.interested.push(user_id)
-    else post.interested = [user_id];
+    if (post.interested && !post.interested.includes(this.state.user_id)) post.interested.push(this.state.user_id)
+    else post.interested = [this.state.user_id];
+    data.db.ref('/posts/'+postId).set(post);
+  }
+
+  _uncheckInterested = async () => {
+    const { navigation } = this.props;
+    const postId = navigation.getParam('id', 'NO-ID');
+    const post = this.state.post;
+    const index = post.interested.indexOf(this.state.user_id);
+    post.interested.splice(index,1);
     data.db.ref('/posts/'+postId).set(post);
   }
 
   render(){
     let user = this.state.users.length ? this.state.users.find((user)=>user.id===this.state.post.poster_id) : '';
-
+    let interestedButton = this.state.post.interested && this.state.post.interested.includes(this.state.user_id) ?
+    <Button color='red' title="No More Interested" onPress={this._uncheckInterested}/> : 
+    <Button color='#42b97c' title="Be Interested" onPress={this._checkInterested}/>;
+    
     return (
       <View style={styles.container}>
         <FormLabel>Producer</FormLabel>
@@ -53,7 +71,7 @@ export default class RequestDetails extends React.Component {
         <FormLabel>{this.state.post.quantity} kg</FormLabel>
         <FormLabel>{this.state.post.price} eur per kg</FormLabel>
         <FormLabel>{this.state.post.location}</FormLabel>
-        <Button color='#42b97c' title="Interested" onPress={this._checkInterested}/>
+        {interestedButton}
       </View>
     );
   }
