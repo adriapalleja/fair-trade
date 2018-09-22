@@ -23,6 +23,7 @@ export default class PostDetails extends React.Component {
 
     data.usersRef.on('value', (snapshot) => {
       let val = snapshot.val();
+      console.log(val);
       this.setState({users:val});
     });
   }
@@ -43,7 +44,7 @@ export default class PostDetails extends React.Component {
   }
 
   render(){
-    let receiver = this.state.post.receiver ? <FormLabel>Traded with {Object.values(this.state.users).find((user)=>this.state.post.receiver === user.id).full_name}</FormLabel> : 
+    let receiver = this.state.post.receiver && Object.keys(this.state.users).length > 0 ? <FormLabel>Traded with {Object.values(this.state.users).find((user)=>this.state.post.receiver === user.id).full_name}</FormLabel> : 
     <Button color='#42b97c' title="Edit Post" onPress={() => this.editProduct()}/>;
     let interested = Object.values(this.state.users).filter((user)=>this.state.post.interested && this.state.post.interested.includes(user.id));
       let usersInterested = interested ? interested.map((user)=>{
