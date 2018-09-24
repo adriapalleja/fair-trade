@@ -1,26 +1,30 @@
 import React from 'react';
-import { AsyncStorage, StyleSheet, View, Button } from 'react-native';
+import { AsyncStorage, StyleSheet, View } from 'react-native';
+import Dashboard from 'react-native-dashboard';
+
+const items = [
+  { name: 'Create Post', background: '#42b97c', icon: 'user', route: 'CreatePost' },
+  { name: 'Your Posts', background: '#42b97c', icon: 'gratipay', route: 'PostsList' },
+  { name: 'Available Requests', background: '#42b97c', icon: 'heart', route: 'RequestsList' },
+  { name: 'Your Reviews', background: '#42b97c', icon: 'users', route: 'ReviewsList' },
+  { name: 'Edit Profile', background: '#42b97c', icon: 'group', route: 'Profile' },
+  { name: 'Log Out', background: '#42b97c', icon: 'calendar', route: 'Logout' },
+];
 
 export default class DashBoard extends React.Component {
   static navigationOptions = {
     title: 'Home',
   };
 
+  _card = el => {
+    if(el.route === 'Logout') this._onLogOut();
+    else this.props.navigation.navigate(el.route);
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Button onPress={()=>this.props.navigation.navigate('CreatePost')} 
-          color='#42b97c' title='Create Post' />
-        <Button onPress={()=>this.props.navigation.navigate('PostsList')} 
-          color='#42b97c' title='Your Posts' />
-        <Button onPress={()=>this.props.navigation.navigate('RequestsList')} 
-          color='#42b97c' title='Available Requests' />
-        <Button onPress={()=>this.props.navigation.navigate('ReviewsList')} 
-          color='#42b97c' title='Your Reviews' />
-        <Button onPress={()=>this.props.navigation.navigate('Profile')} 
-          color='#42b97c' title='Edit Profile'/>
-        <Button onPress={this._onLogOut} 
-          color='#42b97c' title='Log Out'/>
+        <Dashboard items={items} background={true} card={this._card} column={2} />
       </View>
     );
   }
