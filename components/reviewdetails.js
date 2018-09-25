@@ -52,6 +52,7 @@ export default class ReviewDetails extends React.Component {
         <FormInput value={reviewValue} 
           onChangeText={(text)=> this.setState(prevState=>({post: {...prevState.post,review:{...prevState.post.review,text:text}}}))}/>
         {reviewButton}
+        <FormLabel></FormLabel>
         <Button color='#42b97c' title="Save Review" onPress={this._saveReview}/>
       </View>
     );

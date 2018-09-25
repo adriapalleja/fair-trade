@@ -75,6 +75,7 @@ export default class PostDetails extends React.Component {
           onChangeText={(text)=>this.setState(prevState=>({post: {...prevState.post,location:text}}))}/>
       
         {usersInterested}
+        <FormLabel></FormLabel>
         {receiver}
       </View>
     );

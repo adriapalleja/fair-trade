@@ -67,7 +67,7 @@ export default class RequestDetails extends React.Component {
     let user = this.state.users.length ? this.state.users.find((user)=>user.id===this.state.post.poster_id) : '';
     let pos_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === user.id && post.review && post.review.positive);
     let neg_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === user.id && post.review && !post.review.positive);
-    let text = Object.values(this.state.posts).filter((post)=>post.poster_id === user.id && post.review).map((post)=>{
+    let reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === user.id && post.review).map((post)=>{
       return <FormLabel>{Object.keys(this.state.users).length > 0 ? Object.values(this.state.users).find((user)=>user.id === post.receiver).full_name : ''} : {post.review.text}</FormLabel>
     });
     let interestedButton = this.state.post.interested && this.state.post.interested.includes(this.state.user_id) ?
@@ -76,17 +76,14 @@ export default class RequestDetails extends React.Component {
     
     return (
       <View style={styles.container}>
-        <FormLabel>Producer</FormLabel>
-        <FormLabel>Full Name: {user.full_name}</FormLabel>
-        <FormLabel>NIF: {user.nif_number}</FormLabel>
-        <FormLabel>Reviews</FormLabel>
-        {text}
+        <FormLabel>Producer Full Name: {user.full_name}</FormLabel>
+        <FormLabel>Producer NIF: {user.nif_number}</FormLabel>
+        <FormLabel>------- Reviews -------</FormLabel>
+        {reviews}
         <FormLabel>{pos_reviews.length} Positive Reviews : {neg_reviews.length} Negative Reviews</FormLabel>
-        <FormLabel></FormLabel>
-        <FormLabel>{this.state.post.product} </FormLabel>
-        <FormLabel>{this.state.post.quantity} kg</FormLabel>
-        <FormLabel>{this.state.post.price} eur per kg</FormLabel>
-        <FormLabel>{this.state.post.location}</FormLabel>
+        <FormLabel>------- Product -------</FormLabel>
+        <FormLabel>{this.state.post.product} {this.state.post.quantity} kg</FormLabel>
+        <FormLabel>{this.state.post.price} eur per kg - {this.state.post.location}</FormLabel>
         {interestedButton}
       </View>
     );
