@@ -23,6 +23,17 @@ export default class CreatePost extends React.Component {
     const res = data.postProduct(user_id, this.state.product,this.state.quantity,this.state.price,this.state.location);
     if (res) {
       Alert.alert('Product posted!');
+      fetch('http://192.168.1.231:3000/createPost', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          location: this.state.location,
+          product: this.state.product,
+        }),
+      }).then(res=>console.log('product posted!')).catch(error => console.log(error));
       this.props.navigation.goBack();
     } else Alert.alert('Fields still required');
   }

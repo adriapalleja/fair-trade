@@ -1,6 +1,6 @@
 import { Permissions, Notifications } from 'expo';
 
-export async function registerForPushNotificationsAsync(username) {
+export async function registerForPushNotificationsAsync(userId) {
 
   const { status: existingStatus } = await Permissions.getAsync(
     Permissions.NOTIFICATIONS
@@ -32,9 +32,7 @@ export async function registerForPushNotificationsAsync(username) {
       token: {
         value: token,
       },
-      user: {
-        username: username,
-      },
+      userId: userId
     }),
-  }).then(res=>console.log('posted!')).catch(error => console.log(error));
+  }).then(res=>console.log('registered!')).catch(error => console.log(error));
 }

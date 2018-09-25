@@ -17,12 +17,3 @@ exports.registerUser = async (ctx) => {
     ctx.status = err.code;
   }
 }
-
-exports.setInterested = async (ctx) => {
-  try {
-    await model.setInterested(ctx.request.body);
-    ctx.status = 201;
-  } catch (err) {
-    ctx.status = err.code;
-  }
-}
