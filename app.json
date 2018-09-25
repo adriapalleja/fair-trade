@@ -1,5 +1,9 @@
 {
   "expo": {
-    "sdkVersion": "29.0.0"
+    "sdkVersion": "29.0.0",
+    "android": {
+      "package": "com.fairpriceproject",
+      "googleServicesFile": "./google-services.json"
+    }
   }
 }

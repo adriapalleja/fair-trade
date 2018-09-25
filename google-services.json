@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "176853120503",
+    "firebase_url": "https://fairprice-32f08.firebaseio.com",
+    "project_id": "fairprice-32f08",
+    "storage_bucket": "fairprice-32f08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176853120503:android:fa7aff05b7e0fa5c",
+        "android_client_info": {
+          "package_name": "com.fairpriceproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176853120503-72ni0d25rc0q10luirm5cmcbk6boogrv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAZyKBOcqMexNQakDBE07DgJDFEQpiArU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
