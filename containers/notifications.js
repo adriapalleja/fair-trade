@@ -29,9 +29,7 @@ export async function registerForPushNotificationsAsync(userId) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      token: {
-        value: token,
-      },
+      token: token,
       userId: userId
     }),
   }).catch(error => console.log(error));

@@ -42,6 +42,17 @@ export default class RequestDetails extends React.Component {
     else post.interested = [this.state.user_id];
     data.db.ref('/posts/'+post.id).set(post);
     this.setState({post:post});
+    fetch('http://192.168.1.231:3000/interested', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        poster: this.state.post.poster_id,
+        product: this.state.post.product
+      }),
+    }).then(res=>console.log('request sent')).catch(error => console.log(error));
   }
 
   _uncheckInterested = async () => {
