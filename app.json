@@ -4,6 +4,10 @@
     "android": {
       "package": "com.fairpriceproject",
       "googleServicesFile": "./google-services.json"
-    }
+    },
+    "notification": {
+      "icon":"./app_icon.png"
+    },
+    "icon": "./icon_big.png"
   }
 }
