@@ -67,7 +67,9 @@ export default class RequestDetails extends React.Component {
     let user = this.state.users.length ? this.state.users.find((user)=>user.id===this.state.post.poster_id) : '';
     let pos_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === user.id && post.review && post.review.positive);
     let neg_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === user.id && post.review && !post.review.positive);
-    
+    let text = Object.values(this.state.posts).filter((post)=>post.poster_id === user.id && post.review).map((post)=>{
+      return <FormLabel>{Object.keys(this.state.users).length > 0 ? Object.values(this.state.users).find((user)=>user.id === post.receiver).full_name : ''} : {post.review.text}</FormLabel>
+    });
     let interestedButton = this.state.post.interested && this.state.post.interested.includes(this.state.user_id) ?
     <Button color='red' title="No More Interested" onPress={this._uncheckInterested}/> : 
     <Button color='#42b97c' title="Be Interested" onPress={this._checkInterested}/>;
@@ -77,6 +79,8 @@ export default class RequestDetails extends React.Component {
         <FormLabel>Producer</FormLabel>
         <FormLabel>Full Name: {user.full_name}</FormLabel>
         <FormLabel>NIF: {user.nif_number}</FormLabel>
+        <FormLabel>Reviews</FormLabel>
+        {text}
         <FormLabel>{pos_reviews.length} Positive Reviews : {neg_reviews.length} Negative Reviews</FormLabel>
         <FormLabel></FormLabel>
         <FormLabel>{this.state.post.product} </FormLabel>

@@ -46,7 +46,9 @@ export default class Profile extends React.Component {
   render(){
     let pos_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === this.state.user.id && post.review && post.review.positive);
     let neg_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === this.state.user.id && post.review && !post.review.positive);
-    
+    let text = Object.values(this.state.posts).filter((post)=>post.poster_id === this.state.user.id && post.review).map((post)=>{
+      return <FormLabel>{Object.keys(this.state.users).length > 0 ? Object.values(this.state.users).find((user)=>user.id === post.receiver).full_name : ''} : {post.review.text}</FormLabel>
+    });
     return (
       <View style={styles.container}>
         <FormLabel>Full Name</FormLabel>
@@ -64,9 +66,9 @@ export default class Profile extends React.Component {
         <FormLabel>DUN</FormLabel>
         <FormInput value={this.state.user.dun_number} 
           onChangeText={(text)=>this.setState(prevState=>({user: {...prevState.user,dun_number:text}}))}/>
-        <FormLabel></FormLabel>
+        <FormLabel>Reviews</FormLabel>
+        {text}
         <FormLabel>{pos_reviews.length} Positive Reviews : {neg_reviews.length} Negative Reviews</FormLabel>
-
         <Button color='#42b97c' title="Save Profile" onPress={() => this.saveProfile()}/>
       </View>
     );
