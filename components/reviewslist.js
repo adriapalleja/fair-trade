@@ -38,8 +38,8 @@ export default class RequestsList extends React.Component {
     let requests = this.state.posts.map((item) => {
       if (item.receiver===this.state.user_id) {
         return <Card image={{uri:item.img}} key={item.id} title={item.product+' '+item.quantity+' kg'}>
-        <Text>{item.location}</Text>
-        <Button icon={{name: 'code'}} color='#42b97c' title='Review Product'
+        <Text style={{textAlign:'center'}}>{item.location}</Text>
+        <Button color='#42b97c' title='Review Product'
           onPress={()=>this.onReviewEdition(item)}/>
             </Card>
       }

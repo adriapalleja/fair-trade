@@ -41,8 +41,8 @@ export default class PostsList extends React.Component {
     let subtitle = item.receiver ? 'Finished' : length + ' interested';
     if (item.poster_id === this.state.user_id) {
       return <Card image={{uri:item.img}} key={item.id} title={item.product+' '+item.quantity+' kg'}>
-        <Text>{subtitle}</Text>
-        <Button icon={{name: 'code'}} color='#42b97c' title='Post Details'
+        <Text style={{textAlign:'center'}}>{subtitle}</Text>
+        <Button color='#42b97c' title='Post Details'
           onPress={()=>this.onProductDetails(item)}/>
             </Card>
       }

@@ -31,8 +31,8 @@ export default class RequestsList extends React.Component {
     let requests = this.state.posts.map((item) => {
       if (!item.receiver) {
         return <Card image={{uri:item.img}} key={item.id} title={item.product+' '+item.quantity+' kg'}>
-        <Text>{item.location}</Text>
-        <Button icon={{name: 'code'}} color='#42b97c' title='Post Details'
+        <Text style={{textAlign:'center'}}>{item.location}</Text>
+        <Button color='#42b97c' title='Post Details'
           onPress={()=>this.onRequestDetails(item)}/>
             </Card>
       }
