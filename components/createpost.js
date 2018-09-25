@@ -33,7 +33,7 @@ export default class CreatePost extends React.Component {
           location: this.state.location,
           product: this.state.product,
         }),
-      }).then(res=>console.log('product posted!')).catch(error => console.log(error));
+      }).then(res=>Alert.alert('product posted!')).catch(error => console.log(error));
       this.props.navigation.goBack();
     } else Alert.alert('Fields still required');
   }

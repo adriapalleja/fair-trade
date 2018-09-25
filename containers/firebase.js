@@ -45,11 +45,11 @@ export const editProduct = (post) => {
 		.then(data => {
       post.img = data.data.results[0].urls.small;
       db.ref('posts/'+post.id).set(post);
-      return true;
 		}).catch(err => {
       console.log('Error happened during fetching!', err);
       return false;
-		}); 
+    }); 
+    return true;
   } else return false;
 }
 

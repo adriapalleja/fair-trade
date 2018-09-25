@@ -40,7 +40,11 @@ export default class PostDetails extends React.Component {
     const post = this.state.post;
     delete post.interested;
     post.receiver = receiver_id;
-    data.editProduct(post).then(this.setState({post:post}));
+    const res = data.editProduct(post);
+    if (res) {
+      Alert.alert('Product exchanged!');
+      this.props.navigation.goBack();
+    } else Alert.alert('Fields required');
   }
 
   render(){
