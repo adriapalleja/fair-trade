@@ -23,16 +23,17 @@ export const usersRef = db.ref('users');
 export const postProduct = (user_id, product,quantity,price,location) => {
   if (product !== '' && quantity > 0 && price > 0 && location !== '') {
     const id = uuidv4();
+    db.ref('posts/'+id).set({id: id, product: product, quantity: quantity, 
+      price: price, location: location, poster_id: user_id});
     axios.get('https://api.unsplash.com/search/photos/?query='+product+'&client_id=' + APP_ID)
 		.then(data => {
       let img = data.data.results[0].urls.small;
-      db.ref('posts/'+id).set({id: id, product: product, quantity: quantity, 
-        price: price, location: location, poster_id: user_id, img: img});
-        return true;
+      db.ref('posts/'+id+'/img').set(img);
 		}).catch(err => {
       console.log('Error happened during fetching!', err);
       return false;
-		}); 
+    }); 
+    return true;
   } else {
     return false;
   }

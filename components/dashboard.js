@@ -1,6 +1,7 @@
 import React from 'react';
 import { AsyncStorage, StyleSheet, View } from 'react-native';
 import Dashboard from 'react-native-dashboard';
+import * as notification from  './../containers/notifications';
 
 const items = [
   { name: 'Create Post', background: '#42b97c', icon: 'user', route: 'CreatePost' },
@@ -19,6 +20,15 @@ export default class DashBoard extends React.Component {
   _card = el => {
     if(el.route === 'Logout') this._onLogOut();
     else this.props.navigation.navigate(el.route);
+  }
+
+  componentDidMount() {
+    this._callRegister();
+  }
+
+  _callRegister = async() => {
+    const user_id = await AsyncStorage.getItem('userToken');
+    await notification.registerForPushNotificationsAsync(user_id);
   }
 
   render() {
