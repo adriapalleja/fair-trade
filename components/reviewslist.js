@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, AsyncStorage, StyleSheet } from 'react-native';
-import { List, ListItem } from 'react-native-elements'
+import { ScrollView, Text, Button, AsyncStorage, StyleSheet } from 'react-native';
+import { List, Card } from 'react-native-elements'
 import * as data from  '../containers/firebase';
 
 export default class RequestsList extends React.Component {
@@ -37,17 +37,20 @@ export default class RequestsList extends React.Component {
   render() {
     let requests = this.state.posts.map((item) => {
       if (item.receiver===this.state.user_id) {
-        return <ListItem key={item.id} subtitle={item.location}
-        title={item.quantity+' kg '+item.product} onPressRightIcon={()=>this.onReviewEdition(item)}/>
+        return <Card image={{uri:item.img}} key={item.id} title={item.product+' '+item.quantity+' kg'}>
+        <Text>{item.location}</Text>
+        <Button icon={{name: 'code'}} color='#42b97c' title='Review Product'
+          onPress={()=>this.onReviewEdition(item)}/>
+            </Card>
       }
     });
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <List containerStyle={styles.listContainer}>
          {requests}
         </List>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -56,8 +59,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#d9f1e4',
-    alignItems: 'stretch',
-    justifyContent: 'flex-start',
   },
   listContainer: {
     maxWidth: 400
