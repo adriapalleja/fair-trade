@@ -4,12 +4,12 @@ import Dashboard from 'react-native-dashboard';
 import * as notification from  './../containers/notifications';
 
 const items = [
-  { name: 'Create Post', background: '#42b97c', icon: 'user', route: 'CreatePost' },
-  { name: 'Your Posts', background: '#42b97c', icon: 'gratipay', route: 'PostsList' },
-  { name: 'Available Requests', background: '#42b97c', icon: 'heart', route: 'RequestsList' },
-  { name: 'Your Reviews', background: '#42b97c', icon: 'users', route: 'ReviewsList' },
+  { name: 'Create Post', background: '#42b97c', icon: 'share', route: 'CreatePost' },
+  { name: 'Your Posts', background: '#42b97c', icon: 'tags', route: 'PostsList' },
+  { name: 'Available Requests', background: '#42b97c', icon: 'shopping-basket', route: 'RequestsList' },
+  { name: 'Your Reviews', background: '#42b97c', icon: 'thumbs-up', route: 'ReviewsList' },
   { name: 'Edit Profile', background: '#42b97c', icon: 'group', route: 'Profile' },
-  { name: 'Log Out', background: '#42b97c', icon: 'calendar', route: 'Logout' },
+  { name: 'Log Out', background: '#42b97c', icon: 'lock', route: 'Logout' },
 ];
 
 export default class DashBoard extends React.Component {
