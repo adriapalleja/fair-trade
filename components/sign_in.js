@@ -24,7 +24,7 @@ export default class SignIn extends React.Component {
         <FormValidationMessage>This field is required</FormValidationMessage>
 
          <FormLabel>Password</FormLabel>
-        <FormInput onChangeText={(text)=>this.setState({password: text})}/>
+        <FormInput secureTextEntry={true} onChangeText={(text)=>this.setState({password: text})}/>
         <FormValidationMessage>This field is required</FormValidationMessage>
 
         <Button color='#42b97c' title="Sign in!" onPress={this._signInAsync} />
