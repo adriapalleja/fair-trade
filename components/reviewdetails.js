@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, AsyncStorage, Alert, StyleSheet, Button } from 'react-native';
+import { View, Alert, StyleSheet, Button } from 'react-native';
 import { FormLabel, FormInput } from 'react-native-elements';
 import * as data from  '../containers/firebase';
 
