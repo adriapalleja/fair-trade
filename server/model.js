@@ -14,7 +14,7 @@ function createPost (post) {
   let messages = [];
   for(let token of tokens) {
     messages.push({
-      to: token,
+      to: token.token,
       sound: 'default',
       body: post.product + ' in ' + post.location + ' available',
       data: {withSome: 'data'},
