@@ -10,7 +10,6 @@ function registerUser (user) {
 }
 
 function createPost (post) {
-  console.log(post);
   let messages = [];
   for(let token of tokens) {
     messages.push({
@@ -35,7 +34,6 @@ function createPost (post) {
 }
 
 function userInterested(request) {
-  console.log(request);
   tokens.forEach(token => {
     if (token.userId === request.poster) {
       let messages = [];

@@ -47,7 +47,7 @@ export default class Profile extends React.Component {
     let pos_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === this.state.user.id && post.review && post.review.positive);
     let neg_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === this.state.user.id && post.review && !post.review.positive);
     let text = Object.values(this.state.posts).filter((post)=>post.poster_id === this.state.user.id && post.review).map((post)=>{
-      return <FormLabel>{Object.keys(this.state.users).length > 0 ? Object.values(this.state.users).find((user)=>user.id === post.receiver).full_name : ''} : {post.review.text}</FormLabel>
+      return <FormLabel>{Object.keys(this.state.users) ? Object.values(this.state.users).find((user)=>user.id === post.receiver).full_name : ''} : {post.review.text}</FormLabel>
     });
     return (
       <View style={styles.container}>

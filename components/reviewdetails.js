@@ -19,7 +19,6 @@ export default class ReviewDetails extends React.Component {
   componentDidMount() {
     const { navigation } = this.props;
     const post = navigation.getParam('post', {});
-    console.log(post);
     if (!post.review) post.review = {positive: true, text: ''};
     this.setState({post:post});
   }
