@@ -2,6 +2,7 @@ import React from 'react';
 import { View, AsyncStorage, StyleSheet, Button } from 'react-native';
 import { FormLabel } from 'react-native-elements';
 import * as data from  '../containers/firebase';
+import BASE_URL from './../containers/constants';
 
 export default class RequestDetails extends React.Component {
   static navigationOptions = {
@@ -42,7 +43,7 @@ export default class RequestDetails extends React.Component {
     else post.interested = [this.state.user_id];
     data.db.ref('/posts/'+post.id).set(post);
     this.setState({post:post});
-    fetch('http://192.168.1.231:3000/interested', {
+    fetch(BASE_URL+'/interested', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -68,7 +69,7 @@ export default class RequestDetails extends React.Component {
     let pos_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === user.id && post.review && post.review.positive);
     let neg_reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === user.id && post.review && !post.review.positive);
     let reviews = Object.values(this.state.posts).filter((post)=>post.poster_id === user.id && post.review).map((post)=>{
-      return <FormLabel>{Object.keys(this.state.users).length > 0 ? Object.values(this.state.users).find((user)=>user.id === post.receiver).full_name : ''} : {post.review.text}</FormLabel>
+      return <FormLabel>{Object.keys(this.state.users) ? Object.values(this.state.users).find((user)=>user.id === post.receiver).full_name : ''} : {post.review.text}</FormLabel>
     });
     let interestedButton = this.state.post.interested && this.state.post.interested.includes(this.state.user_id) ?
     <Button color='red' title="No More Interested" onPress={this._uncheckInterested}/> : 

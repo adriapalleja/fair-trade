@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Alert, AsyncStorage, View, StyleSheet } from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import BASE_URL from './../containers/constants';
 import * as data from  './../containers/firebase';
 
 export default class CreatePost extends React.Component {
@@ -23,7 +24,7 @@ export default class CreatePost extends React.Component {
     const res = data.postProduct(user_id, this.state.product,this.state.quantity,this.state.price,this.state.location);
     if (res) {
       Alert.alert('Product posted!');
-      fetch('http://192.168.1.231:3000/createPost', {
+      fetch(BASE_URL+'/createPost', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
