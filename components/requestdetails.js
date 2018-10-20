@@ -2,7 +2,7 @@ import React from 'react';
 import { View, AsyncStorage, StyleSheet, Button } from 'react-native';
 import { FormLabel } from 'react-native-elements';
 import * as data from  '../containers/firebase';
-import BASE_URL from './../containers/constants';
+import * as constants from './../containers/constants';
 
 export default class RequestDetails extends React.Component {
   static navigationOptions = {
@@ -43,7 +43,7 @@ export default class RequestDetails extends React.Component {
     else post.interested = [this.state.user_id];
     data.db.ref('/posts/'+post.id).set(post);
     this.setState({post:post});
-    fetch(BASE_URL+'/interested', {
+    fetch(constants.BASE_URL+'/interested', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

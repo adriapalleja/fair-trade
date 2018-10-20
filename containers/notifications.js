@@ -1,4 +1,5 @@
 import { Permissions, Notifications } from 'expo';
+import * as constants from './constants';
 
 export async function registerForPushNotificationsAsync(userId) {
 
@@ -22,7 +23,7 @@ export async function registerForPushNotificationsAsync(userId) {
   // Get the token that uniquely identifies this device
   let token = await Notifications.getExpoPushTokenAsync();
   // POST the token to your backend server from where you can retrieve it to send push notifications.  
-  return fetch('http://192.168.1.231:3000/register', {
+  return fetch(constants.BASE_URL+'/register', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
