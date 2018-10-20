@@ -3,6 +3,11 @@
 
 ## Screenshots
 
+![alt text](https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_1.png)
+![alt text](https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_2.png)
+![alt text](https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_3.png)
+
+
 ## Getting Started
 
 You need the following modules to run the app:
