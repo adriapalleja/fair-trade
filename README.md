@@ -1,10 +1,17 @@
+![alt text] (https://raw.githubusercontent.com/adriapalleja/fair-trade/master/app_icon.png)
 # Fair Trade (Sense intermediaris)
 
 ## Screenshots
 
 ## Getting Started
 
-Except for the regular modules (git, Node, npm), you need the following modules to run 
+You need the following modules to run the app:
+
+* [Node](https://nodejs.org)
+
+* [Npm](https://www.npmjs.com)
+
+* [Yarn](https://yarnpkg.com)
 
 * [Expo XDE](https://www.expo.io) - the Expo development environment.
   ```npm install -g exp```
@@ -30,25 +37,26 @@ npm install
 Sometimes you may need to reset or clear the React Native packager's cache. To do so, you can pass the `--reset-cache` flag to the start script:
 
 ```
-npm start --reset-cache
-# or
 yarn start --reset-cache
+or
+npm start --rest-cache
 ```
+4. Install the Expo client app on your iOS or Android phone and connect to the same wireless network as your computer. On Android, use the [Expo app](https://expo.io) to scan the QR code from your terminal to open your project. On iOS, follow on-screen instructions to get a link.
 
-Install the Expo client app on your iOS or Android phone and connect to the same wireless network as your computer. On Android, use the [Expo app](https://expo.io) to scan the QR code from your terminal to open your project. On iOS, follow on-screen instructions to get a link.
+5. Update your network IP value
 
-Update your network IP value in .env file
+6. Run also your backend with 
 
-Run also your backend with node index.js
-
+```
+node server/index.js
+```
 
 ## Tech Stack
 
-Front-end react-native
+* [React-native](https://facebook.github.io/react-native) (Front-end app)
 
-Firebase
+* [Firebase](https://firebase.google.com) (Standard back-end server)
 
-Koa
+* Koa (Middleware back-end server)
 
-Expo push notifications
-
+* Expo environment and push notifications server
