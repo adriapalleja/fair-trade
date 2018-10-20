@@ -2,12 +2,12 @@
   "expo": {
     "sdkVersion": "29.0.0",
     "android": {
-      "package": "com.fairpriceproject",
+      "package": "com.fairtradeproject",
       "googleServicesFile": "./google-services.json"
     },
     "notification": {
       "icon":"./app_icon.png"
     },
-    "icon": "./icon_big.png"
+    "icon": "./app_icon.png"
   }
 }
