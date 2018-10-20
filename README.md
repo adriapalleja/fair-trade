@@ -4,9 +4,9 @@
 ## Screenshots
 
 <div align="center">
-     <img width= "250px" height= "400px" src="https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_1.png"></img>
-     <img width= "250px" height= "400px"  src="https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_2.png"></img>
-     <img width= "250px" height= "400px" src="https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_3.png"></img>
+     <img width= "250px" src="https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_1.png"></img>
+     <img width= "250px" src="https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_2.png"></img>
+     <img width= "250px" src="https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_3.png"></img>
 </div>
 
 ## Getting Started
