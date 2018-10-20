@@ -1,4 +1,4 @@
-![alt text] (https://raw.githubusercontent.com/adriapalleja/fair-trade/master/app_icon.png)
+![alt text](https://raw.githubusercontent.com/adriapalleja/fair-trade/master/app_icon.png)
 # Fair Trade (Sense intermediaris)
 
 ## Screenshots
@@ -29,7 +29,6 @@ cd fair-trade
 
 ```
 npm install
-
 ```
 
 3. Run the app
