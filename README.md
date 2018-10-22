@@ -1,9 +1,14 @@
 ![alt text](https://raw.githubusercontent.com/adriapalleja/fair-trade/master/app_icon.png)
+
 # Fair Trade (Sense intermediaris)
 
-## Description
-
 Fair Trade is a React Native application tool focused in local producers, giving them the opportunity to post and get interested in local product offers, skipping intermediaries, avoiding waste of non-sell local product and accessing the customer's market from others producers.
+
+<div align="center">
+     <img width= "250px" src="https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_1.png"></img>
+     <img width= "250px" src="https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_2.png"></img>
+     <img width= "250px" src="https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_3.png"></img>
+</div>
 
 ## Tech Stack
 
@@ -14,16 +19,6 @@ Fair Trade is a React Native application tool focused in local producers, giving
 * Koa (Middleware back-end server)
 
 * Expo environment and push notifications server
-
-
-## Screenshots
-
-<div align="center">
-     <img width= "250px" src="https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_1.png"></img>
-     <img width= "250px" src="https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_2.png"></img>
-     <img width= "250px" src="https://raw.githubusercontent.com/adriapalleja/fair-trade/master/screenshots/screenshot_3.png"></img>
-</div>
-
 
 ## Getting Started
 
